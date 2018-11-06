@@ -24,9 +24,11 @@
   "license": "MIT",
   "dependencies": {
     "babel-runtime": "^6.26.0",
-    "puppeteer": "1.4.0"
+    "lodash": "^4.17.11",
+    "puppeteer": "1.9.0"
   },
   "devDependencies": {
+    "babel-core": "6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -36,7 +38,6 @@
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.3",
-    "babel-core": "6.26.3",
     "gulp-eslint": "^4.0.2",
     "gulp-mocha": "^6.0.0",
     "node-version": "^1.1.3"

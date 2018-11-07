@@ -32,7 +32,7 @@ export default {
 
         const page = await this.browser.newPage();
 
-        await this.abortPageRequest(page);
+        await this.abortPageRequest(page, ['image', 'document']);
         await page.goto(pageUrl);
         this.openedPages[id] = page;
     },

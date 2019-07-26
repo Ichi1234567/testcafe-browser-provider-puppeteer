@@ -32,7 +32,10 @@ export default {
 
         const page = await this.browser.newPage();
 
-        await this.abortPageRequest(page, ['image', 'document']);
+        await this.abortPageRequest(page, ['image', 'document'], (theUrl, originAbort) => {
+          // if it is ga, dont abort
+          return /www.google-analytics.com/.test(theUrl) ? false : originAbort;
+        });
         await page.goto(pageUrl);
         this.openedPages[id] = page;
     },
@@ -67,12 +70,13 @@ export default {
           abort = true;
         }
         if (filter) {
-          abort = filter(request.url());
+          abort = filter(request.url(), abort);
         }
         // if it will redirect, dont abort
         if (request.isNavigationRequest()) {
           abort = false;
         }
+
         request[abort ? 'abort' : 'continue']();
       });
     }
